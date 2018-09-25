@@ -47,3 +47,25 @@ const printToDom = (stringToPrint, divId) => {
     selectedDiv.innerHTML = stringToPrint;
 };
 
+const createCards =() => {
+    let newCards = '';
+    for(let i = 0; i < famous.length; i++) {
+        newCards += `<div class='person_cards'>`;
+        newCards += `<header class='person_header'>`;
+        newCards += `<h3>${famous[i].name}</h3>`;
+        newCards += `<h4>${famous[i].title}</h4>`;
+        newCards += `</header>`;
+        newCards += `<section class='person_bio'>`;
+        newCards += `<p>${famous[i].bio}</p>`;
+        newCards += `<img src="${famous[i].image}" width="200px" height="200px"></img>`;
+        newCards += `</section>`;
+        newCards += `<footer class="person_footer">`;
+        newCards += `<p>${famous[i].lifespan.birth}</p>`;
+        newCards += `<p>${famous[i].lifespan.death}</p>`;
+        newCards +=`</footer>`;
+        newCards += `</div>`;
+
+    printToDom(newCards, 'person_container');
+    }
+}
+createCards();
