@@ -50,7 +50,7 @@ const printToDom = (stringToPrint, divId) => {
 const createCards =() => {
     let newCards = '';
     for(let i = 0; i < famous.length; i++) {
-        newCards += `<div class='person_cards'>`;
+        newCards += `<div class='person_cards' id='person_cards_${i}' `;
         newCards += `<header class='person_header'>`;
         newCards += `<h3>${famous[i].name}</h3>`;
         newCards += `<h4>${famous[i].title}</h4>`;
@@ -69,3 +69,12 @@ const createCards =() => {
     }
 }
 createCards();
+
+const personsContainer = document.getElementById('person_container');
+
+personsContainer.addEventListener ('click', (e)=>{
+    element =e.target;
+    let borderElem = element.parentNode.parentNode;
+    borderElem.style.border="1px dotted black";
+});
+
