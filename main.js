@@ -71,10 +71,23 @@ const createCards =() => {
 createCards();
 
 const personsContainer = document.getElementById('person_container');
-
-personsContainer.addEventListener ('click', (e)=>{
-    element =e.target;
-    let borderElem = element.parentNode.parentNode;
-    borderElem.style.border="1px dotted black";
-});
-
+    // collection of children of Person Container Div
+    let childrens = personsContainer.children;
+    let element = childrens.item(0);
+    let element1 = childrens.item(1); 
+    let element2 = childrens.item(2);
+    let element3 = childrens.item(3);
+        if(element){
+            element.addEventListener('click',()=>{
+            element.style.border="1px dotted black";});
+        } if (element1){
+            element1.addEventListener('click',()=>{
+            element1.style.border="1px dotted red";});
+        } if (element2){
+            element2.addEventListener('click',()=>{
+            element2.style.border="1px dotted blue";});
+        } if (element3){
+            element3.addEventListener('click',()=>{
+            element3.style.border="1px dotted brown";});
+        }
+            
