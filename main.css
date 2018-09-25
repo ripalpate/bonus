@@ -1,3 +1,18 @@
 body {
     background-color: aquamarine;
 }
+#person_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.person_cards {
+    width: 30%;
+    margin: 1%;
+}
+.person_cards:nth-child(odd) {
+    background:lightblue;
+}
+.person_cards:nth-child(even) {
+    background:lightyellow;
+}
