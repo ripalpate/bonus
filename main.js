@@ -50,7 +50,7 @@ const printToDom = (stringToPrint, divId) => {
 const createCards =() => {
     let newCards = '';
     for(let i = 0; i < famous.length; i++) {
-        newCards += `<div class='person_cards' id='person_cards_${i}' `;
+        newCards += `<div class='person_cards' id='person_cards_${i}'> `;
         newCards += `<header id='person_header'>`;
         newCards += `<h3>${famous[i].name}</h3>`;
         newCards += `<h4>${famous[i].title}</h4>`;
@@ -79,6 +79,7 @@ const childrenString = () => {
             element.addEventListener('click', (e)=>{
                 element.classList.toggle('border');
                 document.getElementById('user_input').focus();
+
             })  
     }
 };
@@ -86,14 +87,14 @@ childrenString();
 
 const changeBio= () => {
     let textType= document.getElementById("user_input").value;
-    const bioElem = document.getElementById('bio');
-    for (let i = 0; i < bioElem.length; i++) {
-        const element = bioElem[i];
-        element.addEventListener('keyup', ()=>{
+    const personsContainer = document.getElementById('person_container');
+        // collection of children of Person Container Div
+        let childrens = personsContainer.children;
+        for(let i =0; i<childrens.length; i++) {
+            const element = childrens[i].children[1].firstElementChild;
             element.innerHTML= textType;
-        });
+        };
   }
-}
 
 // const removeBorder = (personCards) => {
 //     for(i = 0; i < personCards.length; i++) {
