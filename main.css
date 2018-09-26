@@ -16,3 +16,6 @@ body {
 .person_cards:nth-child(even) {
     background:lightyellow;
 }
+.border{
+    border: 2px dotted black;
+}
