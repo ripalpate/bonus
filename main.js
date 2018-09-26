@@ -56,7 +56,7 @@ const createCards =() => {
         newCards += `<h4>${famous[i].title}</h4>`;
         newCards += `</header>`;
         newCards += `<section id='person_bio'>`;
-        newCards += `<p>${famous[i].bio}</p>`;
+        newCards += `<p id="bio">${famous[i].bio}</p>`;
         newCards += `<img src="${famous[i].image}" width="200px" height="200px"></img>`;
         newCards += `</section>`;
         newCards += `<footer id="person_footer">`;
@@ -77,10 +77,26 @@ const childrenString = () => {
         for(let i =0; i<childrens.length; i++) {
             const element = childrens[i];
             element.addEventListener('click', (e)=>{
-                const element = childrens[i];
                 element.classList.toggle('border');
+                document.getElementById('user_input').focus();
             })  
     }
 };
 childrenString();
 
+const changeBio= () => {
+    let textType= document.getElementById("user_input").value;
+    const bioElem = document.getElementById('bio');
+    for (let i = 0; i < bioElem.length; i++) {
+        const element = bioElem[i];
+        element.addEventListener('keyup', ()=>{
+            element.innerHTML= textType;
+        });
+  }
+}
+
+// const removeBorder = (personCards) => {
+//     for(i = 0; i < personCards.length; i++) {
+//         personCards[i].classList.remove('border');
+//     }
+// };
