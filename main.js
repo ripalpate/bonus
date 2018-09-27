@@ -47,6 +47,7 @@ const printToDom = (stringToPrint, divId) => {
     selectedDiv.innerHTML = stringToPrint;
 };
 
+// function to create person's card
 const createCards =() => {
     let newCards = '';
     for(let i = 0; i < famous.length; i++) {
@@ -69,62 +70,37 @@ const createCards =() => {
     }
 }
 createCards();
-// function to put border around each person's card
-// const childrenString = () => {
-//     const personsContainer = document.getElementById('person_container');
-//         // collection of children of Person Container Div
-//         let childrens = personsContainer.children;
-//         for(let i =0; i<childrens.length; i++) {
-//             const element = childrens[i];
-//             element.addEventListener('click', (e)=>{
-//                 element.classList.toggle('border');
-//                 document.getElementById('user_input').focus();
-//             })  
-//     }
-// };
-// childrenString();
 
+let bioId;
 
-// const changeBio= () => {
-//     let textType= document.getElementById("user_input").value;
-//     const personsContainer = document.getElementById('person_container');
-//         // collection of children of Person Container Div
-//         let childrens = personsContainer.children;
-//         document.getElementById('bio')
-//         for(let i =0; i<childrens.length; i++) {
-//             const element = childrens[i].children[1].firstElementChild;
-//             childrens.addEventListener('click', (e)=>
-//             })
-//             element.innerHTML= textType;
-//         };
-//   }
-
-const bioChange = () => {
+// function to add border on click and
+const elemChange = () => {
     const personsContainer = document.getElementById('person_container');
     let childrens = personsContainer.children;
     for (let i = 0; i< childrens.length; i++) {
         const element = childrens[i];
         element.addEventListener('click', (e)=>{
+            removeBorder();
             element.classList.toggle('border');
             document.getElementById('user_input').focus();
-            let card = e.currentTarget
-            let bioId=e.currentTarget.id;
-            let bioElem = document.getElementById('bio' + bioId);
-            let userInput = document.getElementById("user_input");
-            userInput.addEventListener('keyup', (e)=>{
-                famous[card].bioElem = userInput.value;
-                bioElem.innerHTML= famous[card].bio;
-            })
+            bioId=e.currentTarget.id;
         })
     }
 }
 
-bioChange();
+elemChange();
 
+// function to change bio text
+let userInput = document.getElementById("user_input");
+    const changeText = ()=> {
+        let bioCard= document.getElementById(bioId).getElementsByTagName('p')[0];
+            bioCard.innerHTML= userInput.value;
+        }
 
-
-// const removeBorder = (personCards) => {
-//     for(i = 0; i < personCards.length; i++) {
-//         personCards[i].classList.remove('border');
-//     }
-// };
+// function to remove border
+const removeBorder = () => {
+    let personCards= document.getElementsByClassName('person_cards');
+    for(i = 0; i < personCards.length; i++) {
+        personCards[i].classList.remove('border');
+    }
+};
