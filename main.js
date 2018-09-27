@@ -47,16 +47,17 @@ const printToDom = (stringToPrint, divId) => {
     selectedDiv.innerHTML = stringToPrint;
 };
 
+// function to create person's card
 const createCards =() => {
     let newCards = '';
     for(let i = 0; i < famous.length; i++) {
-        newCards += `<div class='person_cards' id='person_cards_${i}' `;
+        newCards += `<div class='person_cards' id='person_cards_${i}'> `;
         newCards += `<header id='person_header'>`;
         newCards += `<h3>${famous[i].name}</h3>`;
         newCards += `<h4>${famous[i].title}</h4>`;
         newCards += `</header>`;
         newCards += `<section id='person_bio'>`;
-        newCards += `<p>${famous[i].bio}</p>`;
+        newCards += `<p id="bio_${i}">${famous[i].bio}</p>`;
         newCards += `<img src="${famous[i].image}" width="200px" height="200px"></img>`;
         newCards += `</section>`;
         newCards += `<footer id="person_footer">`;
@@ -69,18 +70,37 @@ const createCards =() => {
     }
 }
 createCards();
-// function to put border around each person's card
-const childrenString = () => {
+
+let bioId;
+
+// function to add border on click and
+const elemChange = () => {
     const personsContainer = document.getElementById('person_container');
-        // collection of children of Person Container Div
-        let childrens = personsContainer.children;
-        for(let i =0; i<childrens.length; i++) {
-            const element = childrens[i];
-            element.addEventListener('click', (e)=>{
-                const element = childrens[i];
-                element.classList.toggle('border');
-            })  
+    let childrens = personsContainer.children;
+    for (let i = 0; i< childrens.length; i++) {
+        const element = childrens[i];
+        element.addEventListener('click', (e)=>{
+            removeBorder();
+            element.classList.toggle('border');
+            document.getElementById('user_input').focus();
+            bioId=e.currentTarget.id;
+        })
+    }
+}
+
+elemChange();
+
+// function to change bio text
+let userInput = document.getElementById("user_input");
+    const changeText = ()=> {
+        let bioCard= document.getElementById(bioId).getElementsByTagName('p')[0];
+            bioCard.innerHTML= userInput.value;
+        }
+
+// function to remove border
+const removeBorder = () => {
+    let personCards= document.getElementsByClassName('person_cards');
+    for(i = 0; i < personCards.length; i++) {
+        personCards[i].classList.remove('border');
     }
 };
-childrenString();
-
