@@ -92,10 +92,17 @@ elemChange();
 
 // function to change bio text
 let userInput = document.getElementById("user_input");
-    const changeText = ()=> {
-        let bioCard= document.getElementById(bioId).getElementsByTagName('p')[0];
-            bioCard.innerHTML= userInput.value;
+const changeText = ()=> {
+   let  e = window.event;
+    if(e.keyCode === 13){
+        userInput.value = '';
+    }else{
+        // collect biography of eachcard
+    let bioCard= document.getElementById(bioId).getElementsByTagName('p')[0];
+        let storeInputValue = userInput.value;
+        bioCard.innerHTML= storeInputValue;
         }
+    }
 
 // function to remove border
 const removeBorder = () => {
@@ -104,3 +111,4 @@ const removeBorder = () => {
         personCards[i].classList.remove('border');
     }
 };
+
